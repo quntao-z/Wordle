@@ -18,8 +18,6 @@ public class WordList {
 
             while ((line = bufferedReader.readLine()) != null)
             {
-                // import all cells for a single row as an array of Strings,
-                // then convert to  and doubles as needed
                 String[] wordFromTXT = line.split("\\r?\\n");
 
                 for(int i = 0; i < wordFromTXT.length; i++){
