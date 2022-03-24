@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Wordle {
@@ -35,8 +36,29 @@ public class Wordle {
                     playerList[i].setScore(playerList[i].getScore() + 1);
                 }
                 word = new Word();
+                answer = word.getWord();
                 board = new Grid();
             }
+        }
+
+        int highestScore = 0;
+        for(int i = 0 ; i < playerList.length; i++){
+            if(playerList[i].getScore() > highestScore){
+                highestScore = playerList[i].getScore();
+            }
+        }
+
+        ArrayList<String> winner = new ArrayList<>();
+        for(int i = 0; i < playerList.length; i++){
+            if(playerList[i].getScore() == highestScore){
+                winner.add(playerList[i].getName());
+            }
+        }
+
+        System.out.println();
+        System.out.println("Game Over \nAnd the Winner is .............");
+        for(String name : winner){
+            System.out.println(name);
         }
 
 
@@ -53,7 +75,7 @@ public class Wordle {
             evaluateGuess(validGuess.toLowerCase(), counter);
             board.getBoard();
             if (validGuess.equals(answer)) {
-                System.out.println("\nCongrats you won, the word was " + answer + "!");
+                System.out.println("\nCongrats you get a point, the word was " + answer + "!");
                 win = true;
             }
             counter++;
@@ -97,9 +119,6 @@ public class Wordle {
         return validGuess;
     }
 
-    public void MainMenu(){
-
-    }
 
 
 }
