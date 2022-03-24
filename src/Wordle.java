@@ -111,7 +111,7 @@ public class Wordle {
 
     public String validityOfGuess(String guess) {
         String validGuess = guess;
-        while(!(validGuess.length() == 5)){
+        while(validGuess.length() != 5 || !(validGuess.matches("[a-zA-Z]+")) || validGuess.contains("0") || validGuess.contains("1") || validGuess.contains("2") || validGuess.contains("3") || validGuess.contains("4") || validGuess.contains("5") || validGuess.contains("6") || validGuess.contains("7") || validGuess.contains("8") || validGuess.contains("9")){
             System.out.println("Invalid Guess! Try again");
             System.out.print("What is your guess? ");
             validGuess = scan.nextLine();
