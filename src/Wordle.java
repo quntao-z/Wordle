@@ -74,7 +74,7 @@ public class Wordle {
         }
 
         System.out.println();
-        System.out.println("Game Over \nAnd the Winner is .............");
+        System.out.println("Game Over \nAnd the winner is .............");
         for(String name : winner){
             System.out.println(name);
         }
