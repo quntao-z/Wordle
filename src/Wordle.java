@@ -7,6 +7,7 @@ public class Wordle {
     private String answer;
     private Grid board;
     private Scanner scan;
+    private Scanner scan2;
     private Player[] playerList;
 
     public void play() {
@@ -14,21 +15,25 @@ public class Wordle {
         answer = word.getWord();
         board = new Grid();
         scan = new Scanner(System.in);
+        scan2 = new Scanner(System.in);
 
 
-        System.out.println("Welcome to multiplayer Wordle! \nHow many players are there? ");
+        System.out.print("Welcome to multiplayer Wordle! \nHow many players are there? ");
         int numOfPlayer = scan.nextInt();
         playerList = new Player[numOfPlayer];
 
+        System.out.println();
         for(int i = 1; i < playerList.length +1 ; i++ ){
-            System.out.print("Player " + i + " What is your name? ");
-            String playerName = scan.nextLine();
-            playerList[i-1] = new Player(scan.nextLine());
+            System.out.print("Player " + i + ", What is your name? ");
+            String playerName = scan2.nextLine();
+            playerList[i-1] = new Player(playerName);
         }
+        System.out.println();
 
-        System.out.println("How many rounds of Wordle do you want to play?");
+        System.out.print("How many rounds of Wordle do you want to play? ");
         int numOfRounds = scan.nextInt();
 
+        System.out.println();
         for(int j = 0; j < numOfRounds; j++){
             for(int i = 0; i < playerList.length; i++) {
                 System.out.println(playerList[i].getName() + ", it is your turn! ");
@@ -70,7 +75,7 @@ public class Wordle {
         while (counter < 6 && !win) {
 
             System.out.print("What is your guess? ");
-            String guess = scan.nextLine();
+            String guess = scan2.nextLine();
             String validGuess = validityOfGuess(guess);
             evaluateGuess(validGuess.toLowerCase(), counter);
             board.getBoard();
@@ -83,8 +88,9 @@ public class Wordle {
 
         if (!win)
         {
-            System.out.println("\nSorry, you lost the word was " + answer + ".");
+            System.out.println("\nThe word was " + answer + ".");
         }
+        System.out.println();
         return win;
     }
 
